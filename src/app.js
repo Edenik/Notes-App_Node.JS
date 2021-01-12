@@ -3,9 +3,10 @@ const express = require('express')
 const hbs = require('hbs')
 // require('dotenv').config()
 const cors = require('cors');
-const RandExp = require('randexp');
 const notesRouter = require('./routers/api/notes');
-const webRouter = require('./routers/web');
+const usersRouter = require('./routers/api/users');
+const webRouter = require('./routers/web/web');
+const authRouter = require('./routers/web/auth');
 
 const port = process.env.PORT || 3000
 const app = express();
@@ -30,26 +31,9 @@ hbs.registerPartials(partialsPath);
 
 
 app.use('/api/notes', notesRouter);
+app.use('/api/users', usersRouter);
 app.use('/', webRouter);
-
-
-
-app.get("/randomPassword", (req, res) => {
-
-    /*
- * Passwords must be 
- * - At least 8 characters long, max length 12
- * - Include at least 1 lowercase letter
- * - 1 capital letter
- * - 1 number
- * - 1 special character => !@#$%^&*
-    */
-
-    let passRegex = new RegExp(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,12}$/);
-    let random = new RandExp(passRegex).gen();
-
-    res.send({ random, length: random.length })
-});
+app.use('/auth/', authRouter);
 
 
 app.get('*', (req, res) => {
