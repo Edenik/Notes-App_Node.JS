@@ -20,22 +20,24 @@
     <div class="container" align="center">
 
         <div class="container">
-            <form>
-                <div class="form-group">
-                    <label for="titleInput">Title</label>
+
+            <div class="form-row">
+                <div class="form-group col-md-3" style="display: inline-block;">
+                    <label for="titleInput">Title:</label>
                     <input type="text" class="form-control" id="titleInput" placeholder="Enter Note Title">
-                </div>
 
-                <div class="form-group">
-                    <label for="bodyInput">Content</label>
-                    <textarea class="form-control" id="bodyInput" rows="3" placeholder="Enter Note Content"></textarea>
                 </div>
-
-                <div class="form-group">
-                    <label for="ownerInput">Your Name</label>
+                <div class="form-group col-md-3" style="display: inline-block;">
+                    <label for="ownerInput">Your Name:</label>
                     <input type="text" class="form-control" id="ownerInput" placeholder="Enter Your Name">
                 </div>
-            </form>
+
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="bodyInput">Content:</label>
+                <textarea class="form-control" id="bodyInput" rows="3" placeholder="Enter Note Content"></textarea>
+            </div>
 
             <div style="margin-top: 15px;">
                 <div id="saveEditButton" style="display: inline-block;">

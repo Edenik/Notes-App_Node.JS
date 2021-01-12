@@ -41,7 +41,6 @@ app.use('/api/notes', notesRouter);
 
 /* GET all notes */
 /* GET /allNotes?completed=false */
-/* GET /allNotes?limit=10&skip=0 */
 /* GET /allNotes?sortBy=createdAt:desc */
 app.get('/allNotes', (req, res) => {
     let completed;
@@ -83,38 +82,7 @@ app.get('/editNote/:id', (req, res) => {
     })
 })
 
-
-
 app.get('/search', (req, res) => {
-    // let query = '';
-
-    // if (req.query.owner) {
-    //     if (query === '') {
-    //         query += `?owner=${req.query.owner}`;
-    //     }
-    //     else {
-    //         query += `&owner=${req.query.owner}`;
-    //     }
-    // }
-
-    // if (req.query.title) {
-    //     if (query === '') {
-    //         query += `?title=${req.query.title}`;
-    //     }
-    //     else {
-    //         query += `&title=${req.query.title}`;
-    //     }
-    // }
-
-    // if (req.query.body) {
-    //     if (query === '') {
-    //         query += `?body=${req.query.body}`;
-    //     }
-    //     else {
-    //         query += `&body=${req.query.body}`;
-    //     }
-    // }
-
     res.render('search', {
         title: 'Search Note',
     })
@@ -126,7 +94,6 @@ app.get('*', (req, res) => {
         title: '404'
     })
 })
-
 
 
 app.listen(port, () => console.log(`server now running on port: ${port}`));
