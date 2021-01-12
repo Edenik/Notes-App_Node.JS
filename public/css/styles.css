@@ -1,0 +1,33 @@
+body {
+    background: -webkit-linear-gradient(left, #3e94fd, #45cdf3);
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e63946;
+    color: white;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.card {
+    width: 18rem; 
+    display:inline-block !important;
+    margin: 10px 10px 10px 10px;
+}
+
+.red {
+    background-color: #e63946;
+}
+
+.green {
+    background-color: #7CDF64;
+}
+
+.fas {
+    cursor: pointer;
+}
+
