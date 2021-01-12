@@ -4,10 +4,10 @@ const hbs = require('hbs')
 // require('dotenv').config()
 const cors = require('cors');
 
-const notesRouter = require('./routers/api/notes');
-const usersRouter = require('./routers/api/users');
-const webRouter = require('./routers/web/web');
-const authRouter = require('./routers/web/auth');
+const notesApiRouter = require('./routers/api/notes');
+const usersApiRouter = require('./routers/api/users');
+const mainWebRouter = require('./routers/web/main');
+const authWebRouter = require('./routers/web/auth');
 
 const port = process.env.PORT || 3000
 const app = express();
@@ -31,10 +31,10 @@ app.set('views', viewPath)
 hbs.registerPartials(partialsPath);
 
 
-app.use('/api/notes', notesRouter);
-app.use('/api/users', usersRouter);
-app.use('/', webRouter);
-app.use('/auth/', authRouter);
+app.use('/api/notes', notesApiRouter);
+app.use('/api/users', usersApiRouter);
+app.use('/', mainWebRouter);
+app.use('/auth/', authWebRouter);
 
 
 app.get('*', (req, res) => {
