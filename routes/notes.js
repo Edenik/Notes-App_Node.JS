@@ -36,6 +36,14 @@ router.get('/', async (req, res) => {
     match.owner = req.query.owner;
   }
 
+  if(req.query.body){
+    match.body = req.query.body;
+  }
+
+  if(req.query.title){
+    match.title = req.query.title;
+  }
+
   if (req.query.sortBy) {
     const parts = req.query.sortBy.split(':');
     sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
@@ -71,9 +79,6 @@ router.get('/:id', async (req, res) => {
 
 /* Update note by id */
 router.patch('/:id', async (req, res) => {
-  console.log(req.params.id)
-  console.log('im here')
-  console.log(req.body.completed)
   const updates = Object.keys(req.body)
   const allowedUpdates = ['body', 'title', 'completed']
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
