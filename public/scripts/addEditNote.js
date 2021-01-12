@@ -94,11 +94,11 @@ const goBack = () => {
 
 
 const goToIndexRoute = () => {
-    window.location.href = `http://localhost:3000/allNotes`;
+    window.location.href = `http://localhost:3000/`;
 }
 
 const goToCompletedRoute = (bool) => {
-    window.location.href = `http://localhost:3000/allNotes?completed=${bool}`;
+    window.location.href = `http://localhost:3000/?completed=${bool}`;
 }
 
 const setErrorOnPage = (error) => {

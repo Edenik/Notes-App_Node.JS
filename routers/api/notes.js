@@ -1,8 +1,8 @@
-require('../data/database');
+require('../../data/database');
 const express = require('express');
-const Note = require('../models/note');
+const Note = require('../../models/note');
 const router = express.Router();
-const noteModel = require('../models/note');
+const noteModel = require('../../models/note');
 
 
 /* Post new note */

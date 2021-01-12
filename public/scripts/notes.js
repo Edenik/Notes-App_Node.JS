@@ -53,11 +53,11 @@ const setSortBy = (query) => {
 const changeSort = (value) => {
     const currentUrl = `${window.location}`;
     if (currentUrl.includes('completed=false')) {
-        window.location.href = `http://localhost:3000/allNotes?completed=false&sortBy=${value}`;
+        window.location.href = `http://localhost:3000/?completed=false&sortBy=${value}`;
     } else if (currentUrl.includes('completed=true')) {
-        window.location.href = `http://localhost:3000/allNotes?completed=true&sortBy=${value}`;
+        window.location.href = `http://localhost:3000/?completed=true&sortBy=${value}`;
     } else {
-        window.location.href = `http://localhost:3000/allNotes?sortBy=${value}`;
+        window.location.href = `http://localhost:3000/?sortBy=${value}`;
     }
 }
 
