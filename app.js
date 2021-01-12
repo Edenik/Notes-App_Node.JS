@@ -2,7 +2,9 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const validator = require('validator')
 // require('dotenv').config()
+const RandExp = require('randexp');
 
 const port = process.env.PORT || 3000
 
@@ -12,7 +14,6 @@ const port = process.env.PORT || 3000
 
 const notesRouter = require('./routes/notes');
 const cors = require('cors');
-const { totalmem } = require('os');
 const app = express();
 
 app.use(express.urlencoded());
@@ -88,13 +89,31 @@ app.get('/search', (req, res) => {
     })
 })
 
+
+
+app.get("/randomPassword", (req, res) => {
+
+    /*
+ * Passwords must be 
+ * - At least 8 characters long, max length 12
+ * - Include at least 1 lowercase letter
+ * - 1 capital letter
+ * - 1 number
+ * - 1 special character => !@#$%^&*
+    */
+
+    let passRegex = new RegExp(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,12}$/);
+    let random = new RandExp(passRegex).gen();
+
+    res.send({ random, length: random.length })
+});
+
+
 app.get('*', (req, res) => {
     res.render('404', {
         error: 'Page not found',
         title: '404'
     })
 })
-
-
 app.listen(port, () => console.log(`server now running on port: ${port}`));
 
