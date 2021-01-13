@@ -17,6 +17,12 @@ router.get('/register', (req, res) => {
     })
 })
 
+router.get('*', (req, res) => {
+    res.render('404', {
+        error: 'Page not found',
+        title: '404'
+    })
+})
 
 
 module.exports = router;

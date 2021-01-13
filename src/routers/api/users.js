@@ -3,7 +3,7 @@ const RandExp = require('randexp');
 
 const router = express.Router();
 
-router.get('/randomPassword', (req, res) => {
+router.get('/generatePassword', (req, res) => {
 
     /*
  * Passwords must be 
@@ -15,9 +15,9 @@ router.get('/randomPassword', (req, res) => {
     */
 
     const passRegex = new RegExp(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,12}$/);
-    const random = new RandExp(passRegex).gen();
+    const generatedPassword = new RandExp(passRegex).gen();
 
-    res.send({ random, length: random.length })
+    res.send({ generatedPassword, length: generatedPassword.length })
 });
 
 

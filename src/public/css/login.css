@@ -13,3 +13,7 @@
         background-color: transparent !important;
         color: #000 !important;
 }
+
+label {
+    text-align: left !important;
+}
