@@ -14,8 +14,8 @@ router.get('/randomPassword', (req, res) => {
  * - 1 special character => !@#$%^&*
     */
 
-    let passRegex = new RegExp(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,12}$/);
-    let random = new RandExp(passRegex).gen();
+    const passRegex = new RegExp(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,12}$/);
+    const random = new RandExp(passRegex).gen();
 
     res.send({ random, length: random.length })
 });
