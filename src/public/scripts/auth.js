@@ -23,8 +23,7 @@ const createLoginForm = () => {
         <p id="result"></p>
         <button class="btn btn-block login-btn mb-4"> Login </button>
         <p>Don't have an account? <a href="/auth/register" class="text-reset">Register here</a></p>
-        </div>
-`;
+        </div>`;
 
     setFormOnPage(form);
 }
@@ -50,9 +49,7 @@ const createRegisterForm = () => {
         <button class="btn btn-block login-btn mb-4"> Register </button>
         <button onclick="generatedPasswordHandler()"  class="btn btn-block login-btn mb-4"> Generate Password </button>
         <p>Already have an account? <a href="/auth/login" class="text-reset">Login here</a></p>
-        </div>
-
-`;
+        </div>`;
 
     setFormOnPage(form);
 
@@ -73,13 +70,13 @@ const registerHandler = () => {
 }
 
 const generatedPasswordHandler = () => {
-    fetch(`${url}/users/generatePassword`, {method:"GET"})
-    .then(response => response.json())
-    .then(json => {
-        setGeneratedPassOnPage(json['generatedPassword']);
-        setErrorOnPage(null);
-    })
-    .catch(err => setErrorOnPage(err))
+    fetch(`${url}/users/generatePassword`, { method: "GET" })
+        .then(response => response.json())
+        .then(json => {
+            setGeneratedPassOnPage(json['generatedPassword']);
+            setErrorOnPage(null);
+        })
+        .catch(err => setErrorOnPage(err))
 }
 
 const setGeneratedPassOnPage = (password) => {
