@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
         }
     }
 
-    res.render(title === 'All Notes' ? 'index' : 'index', {
+    res.render('index', {
         title,
         query
     })
@@ -49,6 +49,8 @@ router.get('/search', (req, res) => {
         title: 'Search Note',
     })
 })
+
+
 
 
 module.exports = router;

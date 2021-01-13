@@ -1,8 +1,20 @@
 const express = require('express');
 const RandExp = require('randexp');
+const validator = require('validator');
 
 const router = express.Router();
 
+
+router.post('/register', (req,res) => {
+    const email = req.body.email;    
+    const isValidEmail = validator.isEmail(email)
+    if(!isValidEmail){
+        res.send({isValidEmail, email })
+    } else {
+        res.send('Email is valid ' + email);
+    }
+
+});
 router.get('/generatePassword', (req, res) => {
 
     /*

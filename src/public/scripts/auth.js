@@ -36,7 +36,7 @@ const createLoginForm = () => {
         ${emailInput}
         ${passwordInput}
         ${notifiers}
-        <button class="btn btn-block login-btn mb-4"> Login </button>
+        <button onclick="loginHandler()" class="btn btn-block login-btn mb-4"> Login </button>
         <p>Don't have an account? <a href="/auth/register" class="text-reset">Register here</a></p>`;
 
     setFormOnPage(form);
@@ -49,7 +49,7 @@ const createRegisterForm = () => {
         ${repeatPasswordInput}
         ${notifiers}
         <p id="generatedPassword"></p>
-        <button class="btn btn-block login-btn mb-4"> Register </button>
+        <button onclick="registerHandler()" class="btn btn-block login-btn mb-4"> Register </button>
         <button onclick="generatedPasswordHandler()" class="btn btn-block login-btn mb-4"> Generate Password </button>
         <p>Already have an account? <a href="/auth/login" class="text-reset">Login here</a></p>`;
 
@@ -62,12 +62,32 @@ const setFormOnPage = (form) => {
 
 
 const loginHandler = () => {
-
+   
 }
 
 
 const registerHandler = () => {
+    const passRegex = new RegExp(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,12}$/);
+    const password = document.getElementById('passwordInput').value;
+    const repatedPassword = document.getElementById('repeatPasswordInput').value;
+    const email = document.getElementById('emailInput').value;
 
+    if(!passRegex.test(password)){
+        setErrorOnPage('Password must be strong!')
+    } else if(password != repatedPassword){
+        setErrorOnPage('Password must match!')
+
+    } else if (email.trim() == ''){
+        setErrorOnPage('Must enter email')
+    } else {
+        //success 
+        setErrorOnPage(null);
+        setResultOnPage('success');
+
+        setTimeout(() => {
+            window.location.href = `http://localhost:3000/`;
+        }, 3000);
+    }
 }
 
 let generatedPasswordTimeOut;
@@ -101,5 +121,5 @@ const setErrorOnPage = (error) => {
 }
 
 const setResultOnPage = (result) => {
-    document.getElementById('result').innerHTML = error;
+    document.getElementById('result').innerHTML = result;
 }

@@ -5,6 +5,8 @@ const router = express.Router();
 const noteModel = require('../../models/note');
 
 
+// api/notes/
+
 /* Post new note */
 router.post('/', async (req, res) => {
   const note = new Note({ ...req.body });
@@ -79,8 +81,8 @@ router.get('/:id', async (req, res) => {
 
 /* Update note by id */
 router.patch('/:id', async (req, res) => {
-  const updates = Object.keys(req.body)
-  const allowedUpdates = ['body', 'title', 'completed']
+  const updates = Object.keys(req.body); 
+  const allowedUpdates = ['body', 'title', 'completed'];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
   if (!isValidOperation) {
